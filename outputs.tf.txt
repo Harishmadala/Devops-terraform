@@ -1,0 +1,70 @@
+output "id" {
+    description = "List of IDs of instances"
+    value       = ["${aws_instances.web-1.*.id}"]
+    }\
+
+    output "avaliability_zone" {
+        description = "List of avaliability_zones of instances"
+        value       = ["${aws_instance.web-1.*.avaliability_zone}"]
+    }
+
+    // GH issue: http//github.com/terraform-aws-modules/terraform-aws-ec2-instance/issues/8
+    //output "placement_group" {
+        //  description = "List of placement groups of instances"
+        // value        = ["${element(concat(aws_instance.web-1.*.placement_group, list("")),0)}]
+        //}
+
+        output "key_name {
+            description = "List of key names of instances"
+            value       =["${aws_instance.web-1.*.key_name}"]
+     }
+
+     output "public_dns" {
+         description = "List of public DNS names assighned to the instances. For EC2-VPC, web-1 is only avaliable"
+         value       = ["${aws_instance.web-1.*.public_dns}"]
+ }
+
+ output "public_ip" {
+     description = "List of IP addresses assighned to the instances, if applicable"
+     value       =["${aws_instance.web-1.*.public_ip}"]
+ }
+
+output "network_interface_id" {
+    description = "List of IDs of the network interface of instances"
+    value       =["${aws_instance.web-1.*.network_interface_id}"]
+    }
+
+    output "primary_network_interface_id" {
+        description = "List of IDs of the primary network interfaceof instances"
+        value       = ["${aws_instances.web-1.*.primary_network_interface_id}"]
+    }
+
+    output "private_dns" {
+        description = "List of private DNS names assighned to the instances. can only be used inside the
+        value       = ["${aws_instance.web-1.*.private_dns}"]
+}
+
+output "private_ip" {
+    description = "List of private IP address assighned to the instances"
+    value       = ["${aws_instances.web-1.*.private_ip}"]
+    }
+
+    output "aws_security_groups" {
+        description = "List of associated security groups of instances"
+        value       = ["${aws_instances.web-1.*.security_groups}"]
+    }
+
+    output "vpc_security_group_ids" {
+        description = "List of associated security groups of instances, if running in non-default VPC"
+        value       = ["${aws_instances.web-1.*.vpc_security_group_ids}"]
+    }
+
+    output "subnet_id" {
+        description = "List of IDs of VPC subnets of instances"
+        value       = ["${aws_instances.web-1.*.subnet_id}"]
+    }
+
+    output "tags" {
+        description = "List of tags of instances"
+        value       = ["${aws_instance.web-1.*.tags}"]
+}
